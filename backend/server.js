@@ -25,6 +25,19 @@ connectDatabase().catch((error) => {
   console.log(error);
 });
 
+app.use(async (req, res, next) => {
+  try {
+    await connectDatabase();
+    next();
+  } catch (error) {
+    res.status(500).send({
+      statuscode: 0,
+      message: "Database connection failed",
+      error: error.message
+    });
+  }
+});
+
 
 
 let picname
@@ -71,11 +84,16 @@ if(rr){
 
 
 app.get('/getoffer',async(req,res)=>{
-    const data = await offerdealModel.find();
-    if(data){
-        res.send({statuscode:1,data})
-    }else{
-        res.send({statuscode:0})
+    try {
+      const data = await offerdealModel.find();
+      if(data){
+          res.send({statuscode:1,data})
+      }else{
+          res.send({statuscode:0})
+      }
+    } catch (error) {
+      console.error("GET /getoffer failed:", error.message);
+      res.send({ statuscode: 0, data: [] });
     }
 })
 
