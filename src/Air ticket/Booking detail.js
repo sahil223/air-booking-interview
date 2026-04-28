@@ -75,7 +75,7 @@ const navigate = useNavigate()
         bookingId,
       }
       
-      const result = await fetch('http://localhost:9000/addbooking', {
+      const result = await fetch('https://air-booking-backend.vercel.app/addbooking', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
@@ -103,7 +103,7 @@ navigate({
   }, [])
 
   const show = async () => {
-    const result = await fetch('http://localhost:9000/Dettail', {
+    const result = await fetch('https://air-booking-backend.vercel.app/Dettail', {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }
     });

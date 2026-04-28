@@ -34,7 +34,7 @@ const [fetchData, setFetchData] = useState([]);
     }
 
     try {
-      const result = await fetch('http://localhost:9000/offer', {
+      const result = await fetch('https://air-booking-backend.vercel.app/offer', {
         method: 'POST',
         body: formdata
       });
@@ -67,7 +67,7 @@ const [fetchData, setFetchData] = useState([]);
 
   const show = async () => {
     try {
-      const result = await fetch("http://localhost:9000/getoffer", {
+      const result = await fetch("https://air-booking-backend.vercel.app/getoffer", {
         method: 'GET'
       });
       const res = await result.json();
@@ -92,7 +92,7 @@ const del=async(id)=>{
     return; 
   }
 
-            const result=await fetch(`http://localhost:9000/delete/${id}`,{
+            const result=await fetch(`https://air-booking-backend.vercel.app/delete/${id}`,{
 method:'Delete'
         })
     try {
@@ -132,7 +132,7 @@ formdata.append('oldpic',oldpic)
 formdata.append('iid',iid)
 
 try {
-  const result = await fetch('http://localhost:9000/update',{
+  const result = await fetch('https://air-booking-backend.vercel.app/update',{
     method: 'PUT',
     body: formdata  
   })

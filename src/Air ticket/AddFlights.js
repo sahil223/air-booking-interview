@@ -13,7 +13,7 @@ const AddFlights = () => {
         formData.append("airlinelogo", airlinelogo);
 
         try {
-            const response = await fetch("http://localhost:9000/add-flights-brands", {
+            const response = await fetch("https://air-booking-backend.vercel.app/add-flights-brands", {
                 method: "POST",
                 body: formData,
             });
@@ -40,7 +40,7 @@ const AddFlights = () => {
 
     const show = async () => {
         try {
-            const result = await fetch("http://localhost:9000/get-flights-brands", {
+            const result = await fetch("https://air-booking-backend.vercel.app/get-flights-brands", {
                 method: 'GET'
             });
             const res = await result.json();
@@ -65,7 +65,7 @@ const AddFlights = () => {
             console.log("User cancelled the deletion.");
             return;
         }
-        const result = await fetch(`http://localhost:9000/delete-flight-brands/${id}`, {
+        const result = await fetch(`https://air-booking-backend.vercel.app/delete-flight-brands/${id}`, {
             method: 'DELETE'
         });
         try {

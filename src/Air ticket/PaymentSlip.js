@@ -29,7 +29,7 @@ useEffect(() => {
 
 const show=async()=>{
     try {
-        const result = await fetch(`http://localhost:9000/paymentslip/${id}`,{
+        const result = await fetch(`https://air-booking-backend.vercel.app/paymentslip/${id}`,{
     method:"get"
 })
 const res = await result.json()

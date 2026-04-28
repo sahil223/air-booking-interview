@@ -48,7 +48,7 @@ const Navigate=useNavigate()
 
     try {
       const response = await axios.post(
-        `http://localhost:9000/mainbookingdetail/${id}`, // 👉 apna backend URL yahan likho
+        `https://air-booking-backend.vercel.app/mainbookingdetail/${id}`, // 👉 apna backend URL yahan likho
         bookingData,
         {
           headers: {

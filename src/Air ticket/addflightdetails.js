@@ -25,7 +25,7 @@ const Addflightdetails = () => {
 const submit=async()=>{
   const data={date,departuretime,arrivaltime,durationhourse,city1,city2,price,flightname,flightnumber,stops,selectedAirline}
   try {
-    const result = await fetch("http://localhost:9000/add-flight-details", {
+    const result = await fetch("https://air-booking-backend.vercel.app/add-flight-details", {
       method: 'post',
       body: JSON.stringify(data),
       headers: {
@@ -54,7 +54,7 @@ const submit=async()=>{
     const show = async () => {
         try {
             setLoading(true);
-            const result = await fetch("http://localhost:9000/get-flight-details", {
+            const result = await fetch("https://air-booking-backend.vercel.app/get-flight-details", {
                 method: "get"
             });
             const res = await result.json();
@@ -86,7 +86,7 @@ const submit=async()=>{
 
     const fetchAirlines = async () => {
       try {
-        const res = await fetch("http://localhost:9000/get-flights-brands");
+        const res = await fetch("https://air-booking-backend.vercel.app/get-flights-brands");
         const data = await res.json();
         if (data.statuscode === 1) {
           setAirlines(data.data);
@@ -112,7 +112,7 @@ const deleteflight=async(id)=>{
   if (!confirmDelete) return;
 
   try {
-    const result = await fetch(`http://localhost:9000/delete-flight/${id}`, {
+    const result = await fetch(`https://air-booking-backend.vercel.app/delete-flight/${id}`, {
       method: 'delete',
     });
     const res = await result.json();

@@ -5,14 +5,14 @@ const ManageUsers = () => {
 
   // Fetch all users
   useEffect(() => {
-    fetch("http://localhost:9000/all-users")
+    fetch("https://air-booking-backend.vercel.app/all-users")
       .then((res) => res.json())
       .then((data) => setUsers(data.data || []));
   }, []);
 
   // Change role
   const changeRole = async (id, role) => {
-    await fetch(`http://localhost:9000/update-role/${id}`, {
+    await fetch(`https://air-booking-backend.vercel.app/update-role/${id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ role }),

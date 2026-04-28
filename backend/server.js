@@ -373,15 +373,21 @@ app.get("/Spaymentslip/:id", async (req, res) => {
 
 
 app.post("/login",async(req,res)=>{
-  const result = await  regmodel.findOne({Email:req.body.email})
-  if(!result){
-    res.send({statuscode:0})
-  }else if(result.Password===req.body.password){
-    if(result.utype ==="user"){
-      res.send({statuscode:1, utype:'user', memberdata: result})
-    }else{
-      res.send({statuscode:1, utype:'admin', memberdata:result})
+  try {
+    const result = await regmodel.findOne({ Email: req.body.email });
+    if(!result){
+      res.send({statuscode:0})
+    } else if(result.Password===req.body.password){
+      if(result.utype ==="user"){
+        res.send({statuscode:1, utype:'user', memberdata: result})
+      }else{
+        res.send({statuscode:1, utype:'admin', memberdata:result})
+      }
+    } else {
+      res.send({ statuscode: 0 });
     }
+  } catch (error) {
+    res.status(500).send({ statuscode: 0, message: "Login failed" });
   }
 })
 
@@ -398,17 +404,21 @@ const registerschema = mongoose.Schema({
 regmodel = mongoose.model("Sinup", registerschema,"Sinup")
 
 app.post("/sinup",async(req,res)=>{
-const result = await new regmodel({
-  Name:req.body.name,
-  Email:req.body.email,
-  Password:req.body.password,
-  utype:"user"
-})
-const rr = await result.save()
-if(rr){
-  res.send({statuscode:1})
-}else{
-  res.send({statuscode:0})
+try {
+  const result = await new regmodel({
+    Name:req.body.name,
+    Email:req.body.email,
+    Password:req.body.password,
+    utype:"user"
+  })
+  const rr = await result.save()
+  if(rr){
+    res.send({statuscode:1})
+  }else{
+    res.send({statuscode:0})
+  }
+} catch (error) {
+  res.status(500).send({ statuscode: 0, message: "Signup failed" });
 }
 })
 

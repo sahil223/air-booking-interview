@@ -19,7 +19,7 @@ const Showsbooking = () => {
 
   const show = async () => {
     try {
-      const result = await fetch("http://localhost:9000/GetSbooking", {
+      const result = await fetch("https://air-booking-backend.vercel.app/GetSbooking", {
         method: "GET",
       });
       const res = await result.json();

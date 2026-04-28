@@ -18,7 +18,7 @@ const Login = () => {
     }
 
     try {
-      const result = await fetch("http://localhost:9000/login", {
+      const result = await fetch("https://air-booking-backend.vercel.app/login", {
         method: "post",
         body: JSON.stringify(data),
         headers: {

@@ -23,7 +23,7 @@ const Getofferdeal = () => {
 
   const show = async () => {
     try {
-      const result = await fetch("http://localhost:9000/getoffer", {
+      const result = await fetch("https://air-booking-backend.vercel.app/getoffer", {
         method: 'GET'
       });
       const res = await result.json();

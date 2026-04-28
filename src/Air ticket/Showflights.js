@@ -40,7 +40,7 @@ setstops(d)
     const show = async () => {
         try {
             setLoading(true);
-            const result = await fetch("http://localhost:9000/get-flight-details", {
+            const result = await fetch("https://air-booking-backend.vercel.app/get-flight-details", {
                 method: "get"
             });
             const res = await result.json();

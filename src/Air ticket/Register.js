@@ -13,7 +13,7 @@ const navigate = useNavigate()
 
 const submit =async()=>{
     try {
-        const result = await fetch("http://localhost:9000/sinup",{
+        const result = await fetch("https://air-booking-backend.vercel.app/sinup",{
             method:'post',
             body:JSON.stringify(d),
             headers:{
